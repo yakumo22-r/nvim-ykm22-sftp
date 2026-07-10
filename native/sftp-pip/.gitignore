@@ -1,0 +1,9 @@
+.xmake/
+build/
+compile_commands.json
+.ykm22_nvim
+.cache
+sftp_pip.exe
+sftp_pip
+dep
+sftp_pip_d.exe
