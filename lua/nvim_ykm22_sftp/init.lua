@@ -440,7 +440,7 @@ function M.setup(readCfg)
     _readCfg = opts and opts.read_file or readCfg
 
     M.view = require("nvim_ykm22_sftp.view")
-    M.view.setup(M)
+    M.view.setup(M, opts)
     create_commands()
 
     local git_enabled = not (opts and opts.git and opts.git.enabled == false)

@@ -354,13 +354,20 @@ function M.show_float_ops()
 end
 
 ---@param handle ykm22.nvim.Sftp
-function M.setup(handle)
+---@param opts? table
+function M.setup(handle, opts)
     Handle = handle
     local ok, git = pcall(require, "nvim_ykm22_ui.git")
     if ok then
         GitChangeView = git
     end
-    vim.keymap.set("n", "<leader>u", M.show_float_ops, { noremap = true, silent = true })
+    local keymap = opts and opts.keymaps and opts.keymaps.sftp_menu
+    if keymap == nil then
+        keymap = "<leader>u"
+    end
+    if keymap and keymap ~= false and keymap ~= "" then
+        vim.keymap.set("n", keymap, M.show_float_ops, { noremap = true, silent = true })
+    end
 end
 
 return M
